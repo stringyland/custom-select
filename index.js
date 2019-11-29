@@ -105,6 +105,9 @@ function moveFocus(fromHere, toThere) {
 	if (aCurrentOptions.length === 0) {
 		return
 	}
+	if (toThere === 'input') {
+		csInput.focus()
+	}
 	// possible start points
 	switch(fromHere) {
 		case csInput:
@@ -166,6 +169,7 @@ function updateStatus(howMany) {
 function makeChoice(whichOption) {
 	const optionTitle = whichOption.querySelector('strong')
 	csInput.value = optionTitle.textContent
+	moveFocus(document.activeElement, 'input')
 	// update aria-selected, if using
 }
 
