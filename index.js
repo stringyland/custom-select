@@ -80,7 +80,6 @@ document.addEventListener('click', function(e) {
 // /////////////////////////////////
 
 function toggleList(whichWay) {
-	console.log({whichWay})
 	if (whichWay === 'Open') {
 		csList.classList.remove('hidden-all')
 		csSelector.setAttribute('aria-expanded', 'true')
@@ -92,7 +91,6 @@ function toggleList(whichWay) {
 
 function findFocus() {
 	const focusPoint = document.activeElement
-	console.log({focusPoint})
 	return focusPoint
 }
 
@@ -103,60 +101,51 @@ function moveFocus(fromHere, toThere) {
 			return true
 		}
 	})
+	// don't move if all options have been filtered out
 	if (aCurrentOptions.length === 0) {
 		return
 	}
-	// sort out what happens
+	// possible start points
 	switch(fromHere) {
 		case csInput:
 			if (toThere === 'forward') {
-				console.log('input to first')
 				aCurrentOptions[0].focus()
 			} else if (toThere === 'back') {
-				console.log('input to last')
 				aCurrentOptions[aCurrentOptions.length - 1].focus()
 			}
 			break
 		case csOptions[0]: 
 			if (toThere === 'forward') {
-				console.log('first to second')
 				aCurrentOptions[1].focus()
 			} else if (toThere === 'back') {
-				console.log('first to input')
 				csInput.focus()
 			}
 			break
 		case csOptions[csOptions.length - 1]:
 			if (toThere === 'forward') {
-				console.log('last to first')
 				aCurrentOptions[0].focus()
 			} else if (toThere === 'back') {
-				console.log('last to second-last')
 				aCurrentOptions[aCurrentOptions.length - 2].focus()
 			}
 			break
 		default: // middle list or filtered items 
 			const currentItem = findFocus()
 			const whichOne = aCurrentOptions.indexOf(currentItem)
-			console.log({whichOne})
 			if (toThere === 'forward') {
-				console.log('next')
 				const nextOne = aCurrentOptions[whichOne + 1]
 				nextOne.focus()
 			} else if (toThere === 'back' && whichOne > 0) {
-				console.log('previous')
 				const previousOne = aCurrentOptions[whichOne - 1]
 				previousOne.focus()
-			} else ( // if whichOne = 0
+			} else { // if whichOne = 0
 				csInput.focus()
-			)
+			}
 			break
 	}
 }
 
 function doFilter() {
 	const terms = csInput.value
-	console.log(terms)
 	const aFilteredOptions = aOptions.filter(function(option) {
 		if (option.innerText.toUpperCase().startsWith(terms.toUpperCase())) {
 			return true
@@ -194,12 +183,10 @@ function setState(newState) {
 		case 'closed': 
 			csState = 'closed'
 	}
-	console.log({csState})
 }
 
 function doKeyAction(whichKey) {
 	const currentFocus = findFocus()
-	console.log({whichKey})
 	switch(whichKey) {
 		case 'Enter':
 			if (csState === 'initial') { 
@@ -250,7 +237,6 @@ function doKeyAction(whichKey) {
 				// if state = opened and focus on list, moveFocus to next/first
 				// if state = filtered and focus on input, moveFocus to first
 				// if state = filtered and focus on list, moveFocus to next/first
-				console.log('filtered and arrowdown?' + currentFocus)
 				moveFocus(currentFocus, 'forward')
 			} 
 			break
