@@ -187,6 +187,7 @@ function setState(newState) {
 		case 'closed': 
 			csState = 'closed'
 	}
+	// console.log({csState})
 }
 
 function doKeyAction(whichKey) {
@@ -212,7 +213,9 @@ function doKeyAction(whichKey) {
 				toggleList('Shut')
 				setState('closed')
 			} else if (csState === 'filtered' && currentFocus === csInput) {
-				// if state = filtered and focus on input, set state to opened? i.e. clear it?
+				// if state = filtered and focus on input, set state to opened
+				toggleList('Open')
+				setState('opened')
 			} else { // i.e. csState is closed, or csState is opened/filtered but other focus point?
 				// if state = closed, set state to filtered? i.e. open but keep existing input? 
 				toggleList('Open')
@@ -241,6 +244,7 @@ function doKeyAction(whichKey) {
 				// if state = opened and focus on list, moveFocus to next/first
 				// if state = filtered and focus on input, moveFocus to first
 				// if state = filtered and focus on list, moveFocus to next/first
+				toggleList('Open')
 				moveFocus(currentFocus, 'forward')
 			} 
 			break
