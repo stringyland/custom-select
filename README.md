@@ -1,6 +1,9 @@
 # custom-select
 My version of a custom select input, with filtering
 
+## The process
+https://24ways.org/2019/making-a-better-custom-select-element/
+
 ## To Do
 * <s>Move status update to start on first focus, not on page load</s>
 * Add the high-contrast focus indicator back (not sure when that got removed?)
