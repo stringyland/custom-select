@@ -24,8 +24,7 @@ csOptions.forEach(function(option) {
 	option.setAttribute('role', 'option') 
 	option.setAttribute('tabindex', "-1")  // make li elements keyboard focusable by script only
 })
-// set up a message to keep screen reader users informed of what the custom input is for/doing
-csStatus.textContent = csOptions.length + " options available. Arrow down to browse or start typing to filter."
+
 
 // EVENTS
 // /////////////////////////////////
