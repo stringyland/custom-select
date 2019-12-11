@@ -9,9 +9,9 @@ https://24ways.org/2019/making-a-better-custom-select-element/
 * <s>Add the high-contrast focus indicator back (not sure when that got removed?)</s>
 * Add aria-selected attributes to makeChoice, remove on clearValue
 * check arrow navigation works in all screen readers
-** problems in JAWS/Chrome during filtered state
-** Talkback/Chrome/Android not working well
-** NVDA/Firefox seems ok, continue testing
+  * problems in JAWS/Chrome during filtered state
+  * Talkback/Chrome/Android not working well
+  * NVDA/Firefox seems ok, continue testing
 
 ## Questions
 * What would the impact be of removing aria-controls attribute? It causes older JAWS to give additional instructions which are inaccurate.
