@@ -83,7 +83,7 @@ csSelector.addEventListener('keyup', function(e) {
 })
 
 document.addEventListener('click', function(e) {
-	if (!aParentElementHasId(e, '#myCustomSelect', 20)) {
+	if (!aParentElementHasId(e, 'myCustomSelect', 20)) {
 		// click outside of the custom group
 		toggleList('Shut')
 		setState('initial')
@@ -97,7 +97,7 @@ function aParentElementHasId(event, id, maxDepth) {
 	let currentElement = event.srcElement
 	let count = 0
 
-	while (currentElement !== undefined) {
+	while (currentElement !== undefined && currentElement !== null) {
 		count++
 		if (currentElement.id === id) {
 			return true
