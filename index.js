@@ -188,19 +188,7 @@ function makeChoice(whichOption) {
 }
 
 function setState(newState) {
-	switch (newState) {
-		case 'initial': 
-			csState = 'initial'
-			break
-		case 'opened': 
-			csState = 'opened'
-			break
-		case 'filtered':
-			csState = 'filtered'
-			break
-		case 'closed': 
-			csState = 'closed'
-	}
+	csState = newState;
 	// console.log({csState})
 }
 
