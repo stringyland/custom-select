@@ -6,7 +6,7 @@ https://24ways.org/2019/making-a-better-custom-select-element/
 
 ## To Do
 * <s>Move status update to start on first focus, not on page load</s>
-* Add the high-contrast focus indicator back (not sure when that got removed?)
+* <s>Add the high-contrast focus indicator back (not sure when that got removed?)</s>
 * Add aria-selected attributes to makeChoice, remove on clearValue
 * check arrow navigation works in all screen readers
 ** problems in JAWS/Chrome during filtered state
