@@ -83,7 +83,7 @@ csSelector.addEventListener('keyup', function(e) {
 })
 
 document.addEventListener('click', function(e) {
-	if (!e.target.closest('#myCustomSelect')) {
+	if (!aParentElementHasId(e, '#myCustomSelect', 20)) {
 		// click outside of the custom group
 		toggleList('Shut')
 		setState('initial')
@@ -92,6 +92,23 @@ document.addEventListener('click', function(e) {
 
 // FUNCTIONS 
 // /////////////////////////////////
+
+function aParentElementHasId(event, id, maxDepth) {
+	let currentElement = event.srcElement
+	let count = 0
+
+	while (currentElement !== undefined) {
+		count++
+		if (currentElement.id === id) {
+			return true
+		}
+		if (maxDepth && count > maxDepth) {
+			return false
+		}
+		currentElement = currentElement.parentElement
+	}
+	return false
+}
 
 function toggleList(whichWay) {
 	if (whichWay === 'Open') {
@@ -104,8 +121,7 @@ function toggleList(whichWay) {
 }
 
 function findFocus() {
-	const focusPoint = document.activeElement
-	return focusPoint
+	return document.activeElement
 }
 
 function moveFocus(fromHere, toThere) {
@@ -188,8 +204,7 @@ function makeChoice(whichOption) {
 }
 
 function setState(newState) {
-	csState = newState;
-	// console.log({csState})
+	csState = newState
 }
 
 function doKeyAction(whichKey) {
