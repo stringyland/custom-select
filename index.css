@@ -83,7 +83,7 @@ body {
 }
 
 .custom-select-options li:focus {
-	border: 1px solid blue;
+	border: 2px dashed blue;
 }
 .icon {
 		fill: ButtonText;
