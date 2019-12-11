@@ -1,12 +1,27 @@
+const customSelect = function (element, overrides){
+
 // SETUP
 // /////////////////////////////////
 // assign names to things we'll need to use more than once
-const csSelector = document.querySelector('#myCustomSelect') // the input, svg and ul as a group
-const csInput = csSelector.querySelector('input')
-const csList = csSelector.querySelector('ul')
-const csOptions = csList.querySelectorAll('li')
-const csIcons = csSelector.querySelectorAll('svg')
-const csStatus = document.querySelector('#custom-select-status')
+
+const defaults = {
+	inputSelector: 'input',
+	listSelector: 'ul',
+	optionSelector: 'li',
+	statusSelector: '[aria-live="polite"]'
+};
+
+const options = Object.assign({},
+	defaults, 
+	overrides
+);
+
+const csSelector = document.querySelector(element) // the input, svg and ul as a group
+const csInput = csSelector.querySelector(options.inputSelector)
+const csList = csSelector.querySelector(options.listSelector)
+const csOptions = csList.querySelectorAll(options.optionSelector)
+// const csIcons = csSelector.querySelectorAll('svg')
+const csStatus = document.querySelector(options.statusSelector)
 const aOptions = Array.from(csOptions)
 
 // when JS is loaded, set up our starting point
@@ -282,3 +297,5 @@ function doKeyAction(whichKey) {
 			break 
 	}
 }
+
+};
