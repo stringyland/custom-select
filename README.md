@@ -4,6 +4,9 @@ My version of a custom select input, with filtering
 ## The process
 https://24ways.org/2019/making-a-better-custom-select-element/
 
+## A demo
+https://codepen.io/stringyland/pen/a7106a2577dbc246875275a7c8182abf
+
 ## To Do
 * <s>Move status update to start on first focus, not on page load</s>
 * <s>Add the high-contrast focus indicator back (not sure when that got removed?)</s>
